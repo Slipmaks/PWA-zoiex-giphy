@@ -24,6 +24,10 @@ interface ImagesResponse {
   downsized: ImageProp;
   fixed_height: ImageProp;
   fixed_width: ImageProp;
+  original: ImageProp;
+  "480w_still": ImageProp;
+  hd: ImageProp;
+  downsized_large: ImageProp;
 }
 
 interface MetaResponse {

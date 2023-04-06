@@ -49,7 +49,7 @@ export const useStore = defineStore("app-store", {
           return;
         }
 
-        router.push({ path: "/gif-info" });
+        router.push({ path: "/search-result" });
       } catch (error) {
         console.log(error);
       }
@@ -63,7 +63,7 @@ export const useStore = defineStore("app-store", {
         const response = await data.json();
         this.randomGif = response;
 
-        router.push({ path: "/gif-info" });
+        router.push({ path: "/search-result" });
       } catch (error) {
         console.log(error);
       }

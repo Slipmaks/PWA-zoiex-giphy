@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useStore } from "../stores/app-store";
-import { onMounted } from "vue";
+import TheGif from "../components/TheGif.vue";
 const store = useStore();
-onMounted(() => {
-  store.getTrending();
-});
 </script>
 
 <template>
@@ -16,29 +13,14 @@ onMounted(() => {
         :key="random.id"
         class="d-flex justify-center my-2 images"
       >
-        <img :src="random.images.fixed_height.url" alt="" />
+        <TheGif
+          :title="random.title"
+          :author-link="random.user?.profile_url"
+          :gif-src="random.images.fixed_height.url"
+        ></TheGif>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-.images {
-  flex: 0 0 100%;
-}
-@media (min-width: 599.99px) {
-  .images {
-    flex: 0 0 50%;
-  }
-}
-@media (min-width: 959.99px) {
-  .images {
-    flex: 0 0 33.333333%;
-  }
-}
-@media (min-width: 1263.99px) {
-  .images {
-    flex: 0 0 25%;
-  }
-}
-</style>
+<style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <header class="d-sm-flex my-6">
-    <img src="../assets/logo.png" alt="logo" />
+    <img src="../assets/logo.png" alt="logo" class="mr-2" />
     <v-text-field
       label="search"
       hide-details="auto"
