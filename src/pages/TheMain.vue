@@ -11,11 +11,13 @@ const store = useStore();
       <div
         v-for="random in store.trendingGifs.data"
         :key="random.id"
-        class="d-flex justify-center my-2 images"
+        class="images"
       >
         <TheGif
+          :gif="random"
           :title="random.title"
           :author-link="random.user?.profile_url"
+          :user="random.user"
           :gif-src="random.images.fixed_height.url"
         ></TheGif>
       </div>

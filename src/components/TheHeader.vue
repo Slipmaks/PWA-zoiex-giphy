@@ -1,6 +1,9 @@
 <template>
   <header class="d-sm-flex my-6">
-    <img src="../assets/logo.png" alt="logo" class="mr-2" />
+    <router-link to="/"
+      ><img src="../assets/logo.png" alt="logo" class="mr-2"
+    /></router-link>
+
     <v-text-field
       label="search"
       hide-details="auto"

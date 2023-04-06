@@ -1,14 +1,26 @@
 <template>
   <div class="d-flex flex-column text-center">
     <h2>{{ props.title }}</h2>
-    <img :src="props.gifSrc" :alt="props.title" />
-    <a v-if="props.authorLink" :href="props?.authorLink">Open author</a>
+    <img
+      :src="props.gifSrc"
+      :alt="props.title"
+      @click="store.getGifPage(gif)"
+    />
+
+    <v-btn v-if="user" @click="store.getAuthorPage(user)">Author page</v-btn>
+    <!-- <a v-if="props.authorLink" :href="props.authorLink">Open author</a> -->
   </div>
 </template>
 <script setup lang="ts">
+import { useStore } from "../stores/app-store";
+
 const props = defineProps<{
-  title: string;
+  gif?: Object;
+  title?: string;
   gifSrc: string;
   authorLink?: string;
+  user?: Object;
 }>();
+
+const store = useStore();
 </script>

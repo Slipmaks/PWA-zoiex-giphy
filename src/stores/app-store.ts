@@ -4,12 +4,16 @@ const API_KEY = "GvCRSzE4wEHpWXPORygu0uBVFIIBQ2c2";
 import {
   RandomGifResponse,
   GifsObjectResponse,
+  UserResponse,
+  DataResponse,
 } from "../interfaces/GifsObject";
 
 type RootState = {
   trendingGifs: GifsObjectResponse;
   searchResultGifs: GifsObjectResponse;
   randomGif: RandomGifResponse;
+  currentUser: UserResponse;
+  currentGif: DataResponse;
 };
 
 export const useStore = defineStore("app-store", {
@@ -18,6 +22,8 @@ export const useStore = defineStore("app-store", {
       trendingGifs: {},
       searchResultGifs: {},
       randomGif: {},
+      currentUser: {},
+      currentGif: {},
     } as RootState),
   actions: {
     async getTrending() {
@@ -67,6 +73,15 @@ export const useStore = defineStore("app-store", {
       } catch (error) {
         console.log(error);
       }
+    },
+    getAuthorPage(user: UserResponse) {
+      this.currentUser = user;
+      router.push({ path: "/author" });
+    },
+    getGifPage(gif: any) {
+      console.log(gif);
+      this.currentGif = gif;
+      router.push({ path: "/gif-info" });
     },
   },
   getters: {},

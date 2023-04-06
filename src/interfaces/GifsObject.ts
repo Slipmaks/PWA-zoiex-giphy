@@ -7,14 +7,14 @@ export interface RandomGifResponse {
   data: DataResponse;
   meta: MetaResponse;
 }
-interface DataResponse {
+export interface DataResponse {
   id: string;
   images: ImagesResponse;
   title: string;
   user: UserResponse;
 }
 
-interface UserResponse {
+export interface UserResponse {
   avatar_url: string;
   profile_url: string;
   username: string;

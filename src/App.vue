@@ -11,10 +11,6 @@ onMounted(() => {
 <template>
   <v-container>
     <TheHeader></TheHeader>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="search-result">Search Result</RouterLink>
-    <RouterLink to="/gif-info">Gif Info</RouterLink>
-    <RouterLink to="/author">Author</RouterLink>
     <RouterView />
   </v-container>
 </template>
