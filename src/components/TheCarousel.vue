@@ -5,7 +5,7 @@
         :gif="item"
         :title="item.title"
         :author-link="item.user?.profile_url"
-        :gif-src="item.images.fixed_height.url"
+        :gif-src="item.images.fixed_width.url"
         :user="item.user"
       ></TheGif>
     </v-carousel-item>
@@ -14,7 +14,6 @@
 <script setup lang="ts">
 import TheGif from "./TheGif.vue";
 import { useStore } from "../stores/app-store";
-import { it } from "node:test";
 
 const store = useStore();
 </script>

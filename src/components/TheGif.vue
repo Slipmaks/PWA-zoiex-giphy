@@ -36,7 +36,7 @@ import { DataResponse, UserResponse } from "../interfaces/App";
 const props = defineProps<{
   gif: DataResponse;
   title?: string;
-  gifSrc: string;
+  gifSrc?: string;
   authorLink?: string;
   user?: UserResponse;
 }>();

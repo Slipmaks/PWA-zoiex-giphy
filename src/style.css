@@ -20,3 +20,6 @@ body {
     flex: 0 0 25%;
   }
 }
+.v-responsive__content {
+  align-self: center;
+}
