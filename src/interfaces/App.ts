@@ -12,6 +12,7 @@ export interface DataResponse {
   images: ImagesResponse;
   title: string;
   user: UserResponse;
+  url: string;
 }
 
 export interface UserResponse {

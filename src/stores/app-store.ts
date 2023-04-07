@@ -6,7 +6,7 @@ import {
   GifsObjectResponse,
   UserResponse,
   DataResponse,
-} from "../interfaces/GifsObject";
+} from "../interfaces/App";
 
 type RootState = {
   trendingGifs: GifsObjectResponse;
@@ -14,6 +14,7 @@ type RootState = {
   randomGif: RandomGifResponse;
   currentUser: UserResponse;
   currentGif: DataResponse;
+  isFetching: boolean;
 };
 
 export const useStore = defineStore("app-store", {
@@ -24,6 +25,7 @@ export const useStore = defineStore("app-store", {
       randomGif: {},
       currentUser: {},
       currentGif: {},
+      isFetching: false,
     } as RootState),
   actions: {
     async getTrending() {
@@ -33,19 +35,36 @@ export const useStore = defineStore("app-store", {
         );
         const response = await data.json();
         this.trendingGifs = response;
-        console.log(this.trendingGifs);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async loadMore() {
+      let offset = this.trendingGifs.data.length;
+      if (this.isFetching) {
+        return;
+      }
+      try {
+        this.isFetching = true;
+
+        const data = await fetch(
+          `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=16&offset=${offset}`
+        );
+        const response = await data.json();
+        this.trendingGifs.data.push(...response.data);
+        this.isFetching = false;
       } catch (error) {
         console.log(error);
       }
     },
     async findGifViaSearch(context: string) {
+      this.randomGif = {} as RandomGifResponse;
       try {
         const data = await fetch(
           `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${context}`
         );
         const response = await data.json();
         this.searchResultGifs = response;
-        console.log(response);
 
         if (
           this.searchResultGifs.meta.msg === "OK" &&
@@ -79,7 +98,6 @@ export const useStore = defineStore("app-store", {
       router.push({ path: "/author" });
     },
     getGifPage(gif: any) {
-      console.log(gif);
       this.currentGif = gif;
       router.push({ path: "/gif-info" });
     },

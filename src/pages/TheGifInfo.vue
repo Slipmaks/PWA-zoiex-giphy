@@ -1,13 +1,17 @@
 <template>
-  <h2>Gif Info</h2>
   <div>
-    <TheGif
-      :gif="store.currentGif"
-      :title="store.currentGif.title"
-      :gif-src="store.currentGif.images.downsized_large.url"
-      :author-link="store.currentGif.user.profile_url"
-      :user="store.currentGif.user"
-    ></TheGif>
+    <h2>Gif Info</h2>
+    <v-row justify="center">
+      <v-col cols="12" sm="6">
+        <TheGif
+          :gif="store.currentGif"
+          :title="store.currentGif?.title"
+          :gif-src="store.currentGif.images?.downsized_large.url"
+          :author-link="store.currentGif.user?.profile_url"
+          :user="store.currentGif.user"
+        ></TheGif>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
